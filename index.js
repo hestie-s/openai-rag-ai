@@ -1,11 +1,11 @@
 import "dotenv/config";
 import { YoutubeLoader } from "langchain/document_loaders/web/youtube";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { FaissStore } from "langchain/vectorstores/faiss";
-import { PromptTemplate } from "langchain/prompts";
-import { ChatOpenAI } from "langchain/chat_models/openai";
 import { RetrievalQAChain, loadQAStuffChain } from "langchain/chains";
+import { OpenAIEmbeddings, ChatOpenAI } from "@langchain/openai";
+import { FaissStore } from "@langchain/community/vectorstores/faiss";
+import { PromptTemplate } from "@langchain/core/prompts";
+
 
 // List of videos to load into the vector database
 const videos = [
@@ -77,7 +77,7 @@ await askQuestion("How to perform a POST request in Lightning Web Components?");
 async function askQuestion(question) {
   console.log("-----------------------------------");
   console.log(`🙋‍♂️ ${question}`);
-  const query = await chain.call({ question });
+  const query = await chain.invoke({ question });
   console.log("ℹ️  Answer:\n");
   console.log(query.text);
   showSources(query);
