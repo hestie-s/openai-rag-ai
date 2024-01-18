@@ -19,15 +19,31 @@ run `node langchain_expressions/rag.js` to run a retrieval-augmented generation 
 
 # compare vector of two words with openai
 
+This example just shows how words are stored as vector and the comparison between words return a value based on the relevance.  A lower score is more relevant e.g. same word would equal 0
+
 run `node chroma_markdown/compare_embeddings.js`
 
 
 # rag with markdown and chroma 
+
 This example reads a markdown a file, splits into chunks and save to chroma. It then finds the top 3 chunks from chroma that are relevant to the question based on the relevance score and feeds this to the open ai model as context to answer the question.
+
+
+Step 1: Run Chroma with Docker on your computer
+
+https://docs.trychroma.com/deployment
+
+`docker pull chromadb/chroma`
+
+`docker run -p 8000:8000 chromadb/chroma`
+
+Step 2: Create Chroma Database with documents
 
 run `node chroma_markdown/create_database.js` to create the chroma database with chunks of the data files
 
-run `TBD` to retrieve top 3 chunks and ask LLM questions about those relevant chunks
+Step 3: Query Documents
+
+run `node chroma_markdown/query_data.js` to retrieve top 3 chunks and ask OpenAI Model questions answering from the relevant chunks
 
 
 # chat with custom ai assistant 
