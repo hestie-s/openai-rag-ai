@@ -46,3 +46,13 @@ for (const question of questions) {
   const response = await chain.invoke(question);
   console.log(question, response);
 }
+
+
+// context -> this is a RunnableLambda which takes the input from the .invoke() call, 
+// makes a request to our vector store, and returns the first result.
+
+// question -> this uses a RunnablePassthrough which simply passes whatever the input was through to the next step, 
+// and in our case it returns it to the key in the object we defined.
+
+// Both of these are wrapped inside a RunnableMap. 
+// This is a special type of runnable that takes an object of runnables and executes them all in parallel.

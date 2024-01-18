@@ -14,7 +14,7 @@ run `npm install` to install dependencies
 
 run `node langchain_expressions` for basic prompt example
 
-run `node langchain_expressions/rag.js` to run a retrieval-augmented generation chain 
+run `node langchain_expressions/rag.js` to run a retrieval-augmented generation chain with two custom documents as context
 
 
 # compare vector of two words with openai
@@ -22,8 +22,16 @@ run `node langchain_expressions/rag.js` to run a retrieval-augmented generation 
 run `node chroma_markdown/compare_embeddings.js`
 
 
-# rag with markdown and chroma
+# rag with markdown and chroma 
+This example reads a markdown a file, splits into chunks and save to chroma. It then finds the top 3 chunks from chroma that are relevant to the question based on the relevance score and feeds this to the open ai model as context to answer the question.
 
 run `node chroma_markdown/create_database.js` to create the chroma database with chunks of the data files
 
 run `TBD` to retrieve top 3 chunks and ask LLM questions about those relevant chunks
+
+
+# chat with custom ai assistant 
+
+Create an AI Asssitant using platform.openai.com/assistants and save the Assistant ID in the .env file
+
+run `node custom_ai_assistant` to ask the custom assistant a question and get a response
