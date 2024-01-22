@@ -41,11 +41,11 @@ console.log(formattedPrompt)
 
 const llm = new OpenAI({});
 const response = await llm.invoke(formattedPrompt);
-console.log(`Response: ${response}`);
+console.log(`\n\nResponse: ${response}\n\n`);
 
 
 const source = results.map(el => el[0].metadata.source);
-console.log(`Source: ${source}`);
+console.log(`Source: ${source}\n\n`);
 
 
 // Chat see https://js.langchain.com/docs/modules/model_io/chat/quick_start
